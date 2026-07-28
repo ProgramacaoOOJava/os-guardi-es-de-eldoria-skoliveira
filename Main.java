@@ -1,30 +1,34 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
-        // Criando instâncias de Guerreiro e Mago
+        // Criando personagens
         Guerreiro arthus = new Guerreiro("Arthus", 5, 150, 12.0, 8.0);
         Mago morgana = new Mago("Morgana", 7, 100, 15.0, 10.0);
+        Guerreiro borin = new Guerreiro("Borin", 3, 120, 10.0, 6.0);
+        Mago elara = new Mago("Elara", 6, 90, 14.0, 9.0) ;
         
-        // Exibindo status
-        arthus.exibirStatus();
-        morgana.exibirStatus();
+        // Criando grupos
+        Grupo grupoA = new Grupo("Os Vingadores");
+        grupoA.adicionarMembro(arthus);
+        grupoA.adicionarMembro(elara);
+        Grupo grupoB = new Grupo("Os Destemidos");
+        grupoB.adicionarMembro(morgana);
+        grupoB.adicionarMembro(borin);
 
-        // Usando habilidades especiais
-        arthus.usarHabilidadeEspecial();
-        morgana.usarHabilidadeEspecial();
+        // Listando membros dos grupos
+        grupoA.listarMembros();
+        grupoB.listarMembros();
 
-        System.out.println("\n--- Demonstração de Polimorfismo ---");
-        List<Personagem> herois = new ArrayList<>();
-        herois.add(arthus);
-        herois.add(morgana);
-        herois.add(new Guerreiro("Borin", 3, 120, 10.0, 6.0));
+        // Ordenar membros por nível
+        grupoA.ordenarMembrosPorNivel();
+        grupoB.ordenarMembrosPorNivel();
 
-        for(Personagem p : herois) {
-            p.exibirStatus();
-            p.usarHabilidadeEspecial();
-            System.out.println("----------------------------");
-        }
+        // Listando membros dos grupos
+        grupoA.listarMembros();
+        grupoB.listarMembros();
+
+        // Simulação de batalhas
+        System.out.println("\n--- Batalha ---");
+        grupoA.batalhar(grupoA.getMembros().get(0), grupoB.getMembros().get(0));
+        grupoA.batalhar(grupoA.getMembros().get(1), grupoB.getMembros().get(1));
     }
 }

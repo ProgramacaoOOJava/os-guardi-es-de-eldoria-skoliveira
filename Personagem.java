@@ -1,4 +1,4 @@
-public abstract class Personagem {
+public abstract class Personagem implements Comparable<Personagem> {
     String nome;
     String classe;
     int nivel;
@@ -25,4 +25,14 @@ public abstract class Personagem {
     }
 
     public abstract void usarHabilidadeEspecial();
+
+    @Override
+    public int compareTo(Personagem outro) {
+        return Integer.compare(this.nivel, outro.nivel);
+    }
+
+    @Override
+    public String toString() {
+        return nome + " - " + nivel;
+    }
 }
